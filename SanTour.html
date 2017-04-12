@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <title>SanTour</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--[if lte IE 8]>
+    <!--<script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="SanTour_files/main.css">
+    <!--[if lte IE 9]>
+    <!--<link rel="stylesheet" href="assets/css/ie9.css"/><![endif]-->
+
+    <style>
+        body {
+            font-family: Lucida Grande;
+        }
+
+        h3 {
+            text-decoration: underline;
+        }
+
+        #questionnaireID {
+            float: left;
+            width: 60%;
+            /*border: 1px solid black;*/
+        }
+
+        /*#test {
+            float: left;
+            width: 49%;
+            border: 1px solid yellow;
+        }*/
+
+        #resultatID {
+
+            width: 40%;
+            /*border: 1px solid red;*/
+            position: fixed;
+            top: 0%;
+            right: 0%;
+        }
+
+        #rec1, #rec2, #rec3, #rec4, #rec5, #rec6 {
+
+        }
+
+        footer {
+            clear: both;
+        }
+    </style>
+    <script src="SanTour_files/jquery-3.js"></script>
+    <script src="SanTour_files/highcharts.js"></script>
+    <script src="SanTour_files/highcharts-more.js"></script>
+    <script src="SanTour_files/exporting.js"></script>
+
+
+</head>
+<body onload="redraw(true)">
+
+
+<div id="questionnaireID">
+    <!-- Banner -->
+    <section id="banner">
+        <div>
+            <section class="wrapper">
+                <h2>SanTour: recommendations adaptées à votre Profil</h2>
+
+                <p>Veuillez s'il vous plaît répondre aux questions suivantes.</p>
+
+            </section>
+        </div>
+    </section>
+
+    <!-- One -->
+    <section id="a1" class="wrapper">
+        <div class="inner split">
+            <section>
+                <h3>Activité Physique</h3>
+                <div id="sec_ap1">
+                    <h4>Est-ce que vous avez une activité physique régulière?</h4>
+                    <input name="ap1" id="ap1_1" value="1" type="radio">
+                    <label for="ap1_1">oui</label>
+                    <input name="ap1" id="ap1_2" value="0" checked="checked" type="radio">
+                    <label for="ap1_2">non</label>
+                </div>
+                <div id="sec_ap2" style="display: none;">
+                    <h4>Diriez vous que vous êtes actif-ve au moins 30 minutes chaque jour (au moins 5 jours par
+                        semaine)?</h4>
+                    <input name="ap2" id="ap2_1" value="1" type="radio">
+                    <label for="ap2_1">oui</label>
+                    <input name="ap2" id="ap2_2" value="0" type="radio">
+                    <label for="ap2_2">non</label>
+                </div>
+                <div id="sec_ap3" style="display: none;">
+                    <h4>Est-ce qu'il vous arrive parfois/regulièrement de transpirer ou d'être essoufflé/e durant cette
+                        activité?</h4>
+                    <input name="ap3" id="ap3_1" value="1" type="radio">
+                    <label for="ap3_1">oui</label>
+                    <input name="ap3" id="ap3_2" value="0" type="radio">
+                    <label for="ap3_2">non</label>
+                </div>
+                <div id="sec_ap4" style="">
+                    <h4>Est-ce que vous auriez envie de reprendre une activité physique plus importante dans les
+                        prochains mois?</h4>
+                    <input name="ap4" id="ap4_1" value="1" type="radio">
+                    <label for="ap4_1">oui</label>
+                    <input name="ap4" id="ap4_2" value="0" checked="checked" type="radio">
+                    <label for="ap4_2">non</label>
+                </div>
+                <div id="sec_ap5" style="">
+                    <h4>Est-ce que vous connaisez les avantages que l'activité physique peut apporter pour la
+                        santé?</h4>
+                    <input name="ap5_1" id="ap5_1_1" value="1" checked="checked" type="radio">
+                    <label for="ap5_1_1">oui</label>
+                    <input name="ap5_1" id="ap5_1_2" value="0" type="radio">
+                    <label for="ap5_1_2">non</label>
+
+                    <h4>Est-ce que vous connaisez les risques de l'inactivité?</h4>
+                    <input name="ap5_2" id="ap5_2_1" value="1" checked="checked" type="radio">
+                    <label for="ap5_2_1">oui</label>
+                    <input name="ap5_2" id="ap5_2_2" value="0" type="radio">
+                    <label for="ap5_2_2">non</label>
+                </div>
+            </section>
+        </div>
+    </section>
+
+    <!-- MARCHER SANS AIDE-->
+    <section id="s1" class="wrapper">
+        <div class="inner split">
+            <section>
+                <h3>Marcher sans aides</h3>
+                <h4>Quels dispositifs d'aide à la marche utilisez vous?</h4>
+                <input name="q1" id="r1_1" value="5" type="radio">
+                <label for="r1_1">aucune</label>
+                <input name="q1" id="r1_2" value="4" checked="checked" type="radio">
+                <label for="r1_2">une canne</label>
+                <input name="q1" id="r1_3" value="3" type="radio">
+                <label for="r1_3">deux cannes</label>
+                <input name="q1" id="r1_4" value="2" type="radio">
+                <label for="r1_4">déambulateur</label>
+                <input name="q1" id="r1_5" value="2" type="radio">
+                <label for="r1_5">cadre de marche</label>
+                <input name="q1" id="r1_6" value="1" type="radio">
+                <label for="r1_6">j'ai besoin de l'aide d'une tierce personne</label>
+            </section>
+        </div>
+    </section>
+
+    <!-- VITESSE DE MARCHE-->
+    <section id="s2" class="wrapper">
+        <div class="inner split">
+            <section>
+                <h3>Vitesse Marche</h3>
+                <h4>Par rapport à la vitesse de marche moyenne (celle de vos proches), pensez vous marcher
+                    habituellement ... </h4>
+                <input name="q2" id="r2_1" value="1" type="radio">
+                <label for="r2_1">nettement moins vite</label>
+                <input name="q2" id="r2_2" value="2" type="radio">
+                <label for="r2_2">un peu moins vite</label>
+                <input name="q2" id="r2_3" value="3" type="radio">
+                <label for="r2_3">à la même vitesse</label>
+                <input name="q2" id="r2_4" value="4" type="radio">
+                <label for="r2_4">un peu plus vite</label>
+                <input name="q2" id="r2_5" value="5" checked="checked" type="radio">
+                <label for="r2_5">nettement plus vite</label>
+            </section>
+        </div>
+    </section>
+
+    <!-- TEMPS DE MARCHE-->
+    <section id="s3" class="wrapper">
+        <div class="inner split">
+            <section>
+                <h3>Temps de Marche</h3>
+                <h4>Entourez le temps maximale que vous pensez pouvoir tenir sans vous arrêter pour vous reposer</h4>
+                <input name="q3" id="r3_1" value="0" type="radio">
+                <label for="r3_1">impossible</label>
+                <input name="q3" id="r3_2" value="1" checked="checked" type="radio">
+                <label for="r3_2">1 minute</label>
+                <input name="q3" id="r3_3" value="2" type="radio">
+                <label for="r3_3">5 minutes</label>
+                <input name="q3" id="r3_4" value="3" type="radio">
+                <label for="r3_4">15 minutes</label>
+                <input name="q3" id="r3_5" value="4" type="radio">
+                <label for="r3_5">30 minutes</label>
+                <input name="q3" id="r3_6" value="5" type="radio">
+                <label for="r3_6">1 heure</label>
+                <input name="q3" id="r3_7" value="6" type="radio">
+                <label for="r3_7">2 heures</label>
+                <input name="q3" id="r3_8" value="7" type="radio">
+                <label for="r3_8">3 heures et plus</label>
+                <ul class="actions">
+
+                </ul>
+            </section>
+        </div>
+    </section>
+
+    <!-- CAPACITE A MONTER-->
+    <section id="s4" class="wrapper">
+        <div class="inner split">
+            <section>
+                <h3>Capacité à monter</h3>
+                <h4>Reportez le degré de difficulté physique qui décrit le mieux la
+                    difficulté que vous avez eue à monter des escaliers, sans vous arrêter
+                    pour vous reposer, au cours de la dernière semaine
+                </h4>
+                <h4>Monter 1 étage</h4>
+                <input name="q4_1" id="r4_1_1" value="4" type="radio">
+                <label for="r4_1_1">aucun</label>
+                <input name="q4_1" id="r4_1_2" value="3" type="radio">
+                <label for="r4_1_2">léger</label>
+                <input name="q4_1" id="r4_1_3" value="2" checked="checked" type="radio">
+                <label for="r4_1_3">moyen</label>
+                <input name="q4_1" id="r4_1_4" value="1" type="radio">
+                <label for="r4_1_4">important</label>
+                <input name="q4_1" id="r4_1_5" value="0" type="radio">
+                <label for="r4_1_5">infaisable</label>
+
+                <div id="etage3">
+                    <h4>Monter 3 étages</h4>
+                    <input name="q4_2" id="r4_2_1" value="9" type="radio">
+                    <label for="r4_2_1">aucun</label>
+                    <input name="q4_2" id="r4_2_2" value="8" type="radio">
+                    <label for="r4_2_2">léger</label>
+                    <input name="q4_2" id="r4_2_3" value="7" checked="checked" type="radio">
+                    <label for="r4_2_3">moyen</label>
+                    <input name="q4_2" id="r4_2_4" value="6" type="radio">
+                    <label for="r4_2_4">important</label>
+                    <input name="q4_2" id="r4_2_5" value="5" type="radio">
+                    <label for="r4_2_5">infaisable</label>
+                </div>
+
+                <div id="etage5">
+                    <h4>Monter 5 étages</h4>
+                    <input name="q4_3" id="r4_3_1" value="14" type="radio">
+                    <label for="r4_3_1">aucun</label>
+                    <input name="q4_3" id="r4_3_2" value="13" type="radio">
+                    <label for="r4_3_2">léger</label>
+                    <input name="q4_3" id="r4_3_3" value="12" checked="checked" type="radio">
+                    <label for="r4_3_3">moyen</label>
+                    <input name="q4_3" id="r4_3_4" value="11" type="radio">
+                    <label for="r4_3_4">important</label>
+                    <input name="q4_3" id="r4_3_5" value="10" type="radio">
+                    <label for="r4_3_5">infaisable</label>
+                </div>
+            </section>
+        </div>
+    </section>
+
+
+    <!-- ASSURANCE A MARCHER-->
+    <section id="s8" class="wrapper">
+        <div class="inner split">
+            <section>
+                <h3>Assurance à marcher</h3>
+                <h4>Est-ce que vous avez peur de chuter?</h4>
+                <input name="q8_1" id="r8_1_1" value="0" type="radio">
+                <label for="r8_1_1">oui</label>
+                <input name="q8_1" id="r8_1_2" value="1" checked="checked" type="radio">
+                <label for="r8_1_2">non</label>
+
+                <h4>Avez vous chuté lors des 12 derniers mois?</h4>
+                <input name="q8_2" id="r8_2_1" value="3" type="radio">
+                <label for="r8_2_1">non</label>
+                <input name="q8_2" id="r8_2_2" value="2" type="radio">
+                <label for="r8_2_2">une fois</label>
+                <input name="q8_2" id="r8_2_3" value="1" checked="checked" type="radio">
+                <label for="r8_2_3">deux fois</label>
+                <input name="q8_2" id="r8_2_4" value="0" type="radio">
+                <label for="r8_2_4">plusieurs fois</label>
+
+                <h4>Avez vous parfois des vertiges?</h4>
+                <input name="q8_3" id="r8_3_1" value="0" type="radio">
+                <label for="r8_3_1">oui</label>
+                <input name="q8_3" id="r8_3_2" value="1" checked="checked" type="radio">
+                <label for="r8_3_2">non</label>
+            </section>
+        </div>
+    </section>
+
+    <!-- PEUR DU VIDE-->
+    <section id="s5" class="wrapper">
+        <div class="inner split">
+            <section>
+                <h3>Peur du vide</h3>
+                <h4>Avez vous peur de l'altitude (peur du vide)?</h4>
+                <input name="q5" id="r5_1" value="1" type="radio">
+                <label for="r5_1">oui</label>
+                <input name="q5" id="r5_2" value="0" checked="checked" type="radio">
+                <label for="r5_2">non</label>
+            </section>
+        </div>
+    </section>
+
+    <!-- EQUILIBRE-->
+    <section id="s9" class="wrapper">
+        <div class="inner split">
+            <section>
+                <h3>Equilibre</h3>
+                <h4>Est-ce que vous vous sentez sûr de vous lors que vous vous tenez debout sur une seule jambe sans
+                    vous tenir à quelque chose?</h4>
+                <input name="q9" id="r9_2" value="2" type="radio">
+                <label for="r9_2">oui, je me sens sûr-e</label><input name="q9" id="r9_1" value="1" checked="checked" type="radio">
+                <label for="r9_1">non, je ne me sens pas sûr-e</label>
+                <input name="q9" id="r9_3" value="0" type="radio">
+                <label for="r9_3">impossible de faire sans me tenir</label>
+            </section>
+        </div>
+    </section>
+
+    <!-- DOULEURS-->
+    <section id="s6" class="wrapper">
+        <div class="inner split">
+            <section>
+                <h3>Douleurs</h3>
+                <h4>Avez vous de douleurs?</h4>
+                <input name="q6" id="r6_1" value="1" type="checkbox">
+                <label for="r6_1">Douleurs dans la hanche</label>
+                <input name="q6" id="r6_2" value="1" checked="checked" type="checkbox">
+                <label for="r6_2">Douleurs aux genoux</label>
+                <input name="q6" id="r6_3" value="1" type="checkbox">
+                <label for="r6_3">Douleurs aux pieds</label>
+                <input name="q6" id="r6_4" value="1" type="checkbox">
+                <label for="r6_4">Douleurs au dos</label>
+                <input name="q6" id="r6_5" value="1" type="checkbox">
+                <label for="r6_5">Douleurs ailleurs</label>
+                <input name="q6" id="r6_6" value="0" type="checkbox">
+                <label for="r6_6">Pas de douleurs</label>
+            </section>
+        </div>
+    </section>
+
+    <!-- MOBILITE-->
+    <section id="s7" class="wrapper">
+        <div class="inner split">
+            <section>
+                <h3>Mobilité articulaire</h3>
+                <h4>Avez vous des problèmes de mobilité dans une ou plusieurs des articulations suivantes?</h4>
+                <input name="q7" id="r7_1" value="1" type="checkbox">
+                <label for="r7_1">Mobilité réduite à la cheville</label>
+                <input name="q7" id="r7_2" value="1" checked="checked" type="checkbox">
+                <label for="r7_2">Mobilité réduite aux genoux</label>
+                <input name="q7" id="r7_3" value="1" type="checkbox">
+                <label for="r7_3">Hanche</label>
+                <!--<input name="q7" id="r7_4" value="1" type="checkbox">
+                <label for="r7_4">Hanche</label>  A VERIFIER AVEC ROGER-->
+                <input name="q7" id="r7_4" value="0" type="checkbox">
+                <label for="r7_4">Pas de problèmes de mobilité</label>
+            </section>
+        </div>
+    </section>
+
+<!-- Footer -->
+<footer id="footer">
+    <div class="copyright">
+        © Untitled. All rights reserved. Images: <a href="http://unsplash.com/">Unsplash</a>. Design: <a href="http://templated.co/">TEMPLATED</a>.
+    </div>
+</footer>
+
+</div>
+
+<div id="resultatID">
+    <div id="radarID" style="min-width: 400px; max-width: 600px; height: 400px; margin: 0 auto" data-highcharts-chart="17"><div id="highcharts-jlys6ec-47" style="position: relative; overflow: hidden; width: 470px; height: 400px; text-align: left; line-height: normal; z-index: 0; left: 0.200012px; top: 0px;" class="highcharts-container "><svg version="1.1" class="highcharts-root " style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Arial, Helvetica, sans-serif;font-size:12px;" xmlns="http://www.w3.org/2000/svg" width="470" height="400" viewBox="0 0 470 400"><desc>Created with Highcharts 5.0.10</desc><defs><clipPath id="highcharts-jlys6ec-48"><rect x="0" y="0" width="322" height="338" fill="none"></rect></clipPath></defs><rect fill="#ffffff" class="highcharts-background" x="0" y="0" width="470" height="400" rx="0" ry="0"></rect><rect fill="none" class="highcharts-plot-background" x="10" y="47" width="322" height="338"></rect><g class="highcharts-pane-group"></g><g class="highcharts-grid highcharts-xaxis-grid "><path fill="none" stroke="#e6e6e6" stroke-width="1" class="highcharts-grid-line" d="M 171 216 L 171 87.19999999999999" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="1" class="highcharts-grid-line" d="M 171 216 L 246.70674049527057 111.79861112450678" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="1" class="highcharts-grid-line" d="M 171 216 L 293.4960792988158 176.19861112450678" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="1" class="highcharts-grid-line" d="M 171 216 L 293.4960792988158 255.80138887549322" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="1" class="highcharts-grid-line" d="M 171 216 L 246.70674049527057 320.2013888754932" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="1" class="highcharts-grid-line" d="M 171 216 L 171 344.8" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="1" class="highcharts-grid-line" d="M 171 216 L 95.29325950472946 320.20138887549325" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="1" class="highcharts-grid-line" d="M 171 216 L 48.503920701184214 255.80138887549325" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="1" class="highcharts-grid-line" d="M 171 216 L 48.5039207011842 176.19861112450678" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="1" class="highcharts-grid-line" d="M 171 216 L 95.29325950472943 111.79861112450678" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="1" class="highcharts-grid-line" d="M 171 216 L 170.99999999999997 87.19999999999999" opacity="1"></path></g><g class="highcharts-grid highcharts-yaxis-grid "><path fill="none" stroke="#e6e6e6" stroke-width="1" class="highcharts-grid-line" d="M 171 216 L 171 216 L 171 216 L 171 216 L 171 216 L 171 216 L 171 216 L 171 216 L 171 216 L 171 216 L 171 216 L 171 216" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="1" class="highcharts-grid-line" d="M 171 151.6 L 171 151.6 L 133.14662975236473 163.8993055622534 L 109.7519603505921 196.0993055622534 L 109.7519603505921 235.9006944377466 L 133.14662975236473 268.1006944377466 L 171 280.4 L 208.85337024763527 268.1006944377466 L 232.2480396494079 235.9006944377466 L 232.2480396494079 196.0993055622534 L 208.85337024763527 163.8993055622534 L 171 151.6" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="1" class="highcharts-grid-line" d="M 171 87.19999999999999 L 170.99999999999997 87.19999999999999 L 95.29325950472943 111.79861112450678 L 48.5039207011842 176.19861112450678 L 48.503920701184214 255.80138887549325 L 95.29325950472946 320.20138887549325 L 171 344.8 L 246.70674049527057 320.2013888754932 L 293.4960792988158 255.80138887549322 L 293.4960792988158 176.19861112450678 L 246.70674049527057 111.79861112450678 L 171 87.19999999999999" opacity="1"></path></g><rect fill="none" class="highcharts-plot-border" x="10" y="47" width="322" height="338"></rect><g class="highcharts-axis highcharts-xaxis "><path fill="none" class="highcharts-axis-line" d="M 171 87.19999999999999 A 128.8 128.8 0 1 1 170.8712000214666 87.20006439999463 M 171 216 A 0 0 0 1 0 171 216 "></path></g><g class="highcharts-axis highcharts-yaxis "><path fill="none" class="highcharts-axis-line" d="M 171 216 L 171 87.19999999999999"></path></g><g class="highcharts-series-group"><g class="highcharts-series highcharts-series-0 highcharts-line-series highcharts-color-0 " transform="translate(10,47) scale(1 1)" clip-path="url(#highcharts-jlys6ec-48)"><path fill="none" d="M 161 126.06666666666666 L 221.56539239621657 85.63888889960549 L 283.4960792988151 129.19861112450465 L 178.4994398998307 174.68591269649946 L 219.88302038521323 250.04552468093715 L 160.99999999999946 246.27999999999997 L 85.29325950472442 273.20138887548956 L 99.75196035059233 188.9006944377473 L 63.00313656094836 137.15888889960237 L 110.5288396698177 99.53240741633925 L 161 126.06666666666666" class="highcharts-graph" stroke="#7cb5ec" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path><path fill="none" d="M 151 126.06666666666666 L 161 126.06666666666666 L 221.56539239621657 85.63888889960549 L 283.4960792988151 129.19861112450465 L 178.4994398998307 174.68591269649946 L 219.88302038521323 250.04552468093715 L 160.99999999999946 246.27999999999997 L 85.29325950472442 273.20138887548956 L 99.75196035059233 188.9006944377473 L 63.00313656094836 137.15888889960237 L 110.5288396698177 99.53240741633925 L 161 126.06666666666666 L 171 126.06666666666666" stroke-linejoin="round" visibility="visible" stroke="rgba(192,192,192,0.0001)" stroke-width="22" class="highcharts-tracker"></path></g><g class="highcharts-markers highcharts-series-0 highcharts-line-series highcharts-color-0 highcharts-tracker " transform="translate(10,47) scale(1 1)" clip-path="none"><path fill="#7cb5ec" d="M 161 126.06666666666666 A 0 0 0 1 1 161 126.06666666666666 Z" class="highcharts-halo highcharts-color-0" fill-opacity="0.25"></path><path fill="#7cb5ec" d="M 165 126.06666666666666 A 4 4 0 1 1 164.99999800000018 126.06266666733333 Z" class="highcharts-point highcharts-color-0 " stroke-width="1"></path><path fill="#7cb5ec" d="M 225 85.63888889960549 A 4 4 0 1 1 224.99999800000018 85.63488890027216 Z" class="highcharts-point highcharts-color-0"></path><path fill="#7cb5ec" d="M 287 129.19861112450465 A 4 4 0 1 1 286.9999980000002 129.19461112517132 Z" class="highcharts-point highcharts-color-0 " stroke-width="1"></path><path fill="#7cb5ec" d="M 182 174.68591269649946 A 4 4 0 1 1 181.99999800000018 174.68191269716613 Z" class="highcharts-point highcharts-color-0 " stroke-width="1"></path><path fill="#7cb5ec" d="M 223 250.04552468093715 A 4 4 0 1 1 222.99999800000018 250.04152468160382 Z" class="highcharts-point highcharts-color-0"></path><path fill="#7cb5ec" d="M 164 246.27999999999997 A 4 4 0 1 1 163.99999800000018 246.27600000066664 Z" class="highcharts-point highcharts-color-0"></path><path fill="#7cb5ec" d="M 89 273.20138887548956 A 4 4 0 1 1 88.99999800000016 273.1973888761562 Z" class="highcharts-point highcharts-color-0"></path><path fill="#7cb5ec" d="M 103 188.9006944377473 A 4 4 0 1 1 102.99999800000016 188.89669443841396 Z" class="highcharts-point highcharts-color-0"></path><path fill="#7cb5ec" d="M 67 137.15888889960237 A 4 4 0 1 1 66.99999800000016 137.15488890026904 Z" class="highcharts-point highcharts-color-0 " stroke-width="1"></path><path fill="#7cb5ec" d="M 114 99.53240741633925 A 4 4 0 1 1 113.99999800000016 99.52840741700592 Z" class="highcharts-point highcharts-color-0"></path></g></g><g class="highcharts-button highcharts-contextbutton" style="cursor:pointer;" stroke-linecap="round" transform="translate(436,10)"><title>Chart context menu</title><rect fill="#ffffff" class=" highcharts-button-box" x="0.5" y="0.5" width="24" height="22" rx="2" ry="2" stroke="none" stroke-width="1"></rect><path fill="#666666" d="M 6 6.5 L 20 6.5 M 6 11.5 L 20 11.5 M 6 16.5 L 20 16.5" class="highcharts-button-symbol" stroke="#666666" stroke-width="3"></path><text x="0" style="font-weight:normal;color:#333333;fill:#333333;" y="12"></text></g><text x="155" text-anchor="middle" class="highcharts-title" style="color:#333333;font-size:18px;fill:#333333;" y="24"><tspan>Votre niveau fitness</tspan></text><g class="highcharts-legend" transform="translate(344,80)"><rect fill="none" class="highcharts-legend-box" rx="0" ry="0" x="0" y="0" width="116" height="26" visibility="visible"></rect><g><g><g class="highcharts-legend-item highcharts-line-series highcharts-color-0 highcharts-series-0" transform="translate(8,3)"><path fill="none" d="M 0 11 L 16 11" class="highcharts-graph" stroke="#7cb5ec" stroke-width="2"></path><path fill="#7cb5ec" d="M 12 11 A 4 4 0 1 1 11.999998000000167 10.996000000666664 Z" class="highcharts-point"></path><text x="21" style="color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;" text-anchor="start" y="15"><tspan>Votre niveau</tspan></text></g></g></g></g><g class="highcharts-axis-labels highcharts-xaxis-labels "><text x="171" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" transform="translate(0,0)" text-anchor="middle" y="69.44999809265136" opacity="1"><tspan>Activité</tspan><tspan dy="14" x="171">physique</tspan><title>Activité physique</title></text><text x="255.52351927965765" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" transform="translate(0,0)" text-anchor="start" y="96.91335620888256" opacity="1"><tspan>Marcher</tspan><tspan dy="14" x="255.52351927965765">sans aides</tspan><title>Marcher sans aides</title></text><text x="307.7619270432431" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" transform="translate(0,0)" text-anchor="start" y="168.81335620888257" opacity="1"><tspan>Vitesse</tspan><tspan dy="14" x="307.7619270432431">marche</tspan><title>Vitesse marche</title></text><text x="307.7619270432431" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" transform="translate(0,0)" text-anchor="start" y="257.68664379111743" opacity="1"><tspan>Temps de</tspan><tspan dy="14" x="307.7619270432431">marche</tspan><title>Temps de marche</title></text><text x="255.52351927965765" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" transform="translate(0,0)" text-anchor="start" y="329.58664379111747" opacity="1"><tspan>Capacité à</tspan><tspan dy="14" x="255.52351927965765">monter</tspan><title>Capacité à monter</title></text><text x="171" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" transform="translate(0,0)" text-anchor="middle" y="357.05" opacity="1"><tspan>Assurance</tspan><tspan dy="14" x="171">à marcher</tspan><title>Assurance à marcher</title></text><text x="86.47648072034237" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" transform="translate(0,0)" text-anchor="end" y="329.58664379111747" opacity="1"><tspan>Pas peur du</tspan><tspan dy="14" x="86.47648072034237">vide</tspan><title>Pas peur du vide</title></text><text x="34.23807295675692" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" transform="translate(0,0)" text-anchor="end" y="264.68664379111743" opacity="1"><tspan>Equilibre</tspan></text><text x="34.238072956756895" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" transform="translate(0,0)" text-anchor="end" y="168.81335620888257" opacity="1"><tspan>Sans</tspan><tspan dy="14" x="34.238072956756895">douleurs</tspan><title>Sans douleurs</title></text><text x="86.47648072034234" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" transform="translate(0,0)" text-anchor="end" y="96.91335620888256" opacity="1"><tspan>Mobilité</tspan><tspan dy="14" x="86.47648072034234">articulaire</tspan><title>Mobilité articulaire</title></text><text x="0" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" transform="translate(0,0)" text-anchor="middle" y="-9999"><tspan>10</tspan></text></g><g class="highcharts-axis-labels highcharts-yaxis-labels "><text x="168" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="end" transform="translate(0,0)" y="214" opacity="1"><tspan>0</tspan></text><text x="168" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="end" transform="translate(0,0)" y="149.6" opacity="1"><tspan>50</tspan></text><text x="0" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="end" transform="translate(0,0)" y="-9999"><tspan>100</tspan></text></g><text x="460" class="highcharts-credits" text-anchor="end" style="cursor:pointer;color:#999999;font-size:9px;fill:#999999;" y="395">Highcharts.com</text><g class="highcharts-label highcharts-tooltip highcharts-color-0" style="cursor:default;pointer-events:none;white-space:nowrap;" transform="translate(112,-9999)" opacity="0" visibility="visible"><path fill="none" class="highcharts-label-box highcharts-tooltip-box" d="M 3.5 0.5 L 114.5 0.5 C 117.5 0.5 117.5 0.5 117.5 3.5 L 117.5 41.5 C 117.5 44.5 117.5 44.5 114.5 44.5 L 64.5 44.5 58.5 50.5 52.5 44.5 3.5 44.5 C 0.5 44.5 0.5 44.5 0.5 41.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" isShadow="true" stroke="#000000" stroke-opacity="0.049999999999999996" stroke-width="5" transform="translate(1, 1)"></path><path fill="none" class="highcharts-label-box highcharts-tooltip-box" d="M 3.5 0.5 L 114.5 0.5 C 117.5 0.5 117.5 0.5 117.5 3.5 L 117.5 41.5 C 117.5 44.5 117.5 44.5 114.5 44.5 L 64.5 44.5 58.5 50.5 52.5 44.5 3.5 44.5 C 0.5 44.5 0.5 44.5 0.5 41.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" isShadow="true" stroke="#000000" stroke-opacity="0.09999999999999999" stroke-width="3" transform="translate(1, 1)"></path><path fill="none" class="highcharts-label-box highcharts-tooltip-box" d="M 3.5 0.5 L 114.5 0.5 C 117.5 0.5 117.5 0.5 117.5 3.5 L 117.5 41.5 C 117.5 44.5 117.5 44.5 114.5 44.5 L 64.5 44.5 58.5 50.5 52.5 44.5 3.5 44.5 C 0.5 44.5 0.5 44.5 0.5 41.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" isShadow="true" stroke="#000000" stroke-opacity="0.15" stroke-width="1" transform="translate(1, 1)"></path><path fill="rgba(247,247,247,0.85)" class="highcharts-label-box highcharts-tooltip-box" d="M 3.5 0.5 L 114.5 0.5 C 117.5 0.5 117.5 0.5 117.5 3.5 L 117.5 41.5 C 117.5 44.5 117.5 44.5 114.5 44.5 L 64.5 44.5 58.5 50.5 52.5 44.5 3.5 44.5 C 0.5 44.5 0.5 44.5 0.5 41.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" stroke="#7cb5ec" stroke-width="1"></path><text x="8" style="font-size:12px;color:#333333;fill:#333333;" y="20"><tspan style="font-size: 10px">Activité physique</tspan><tspan style="fill:#7cb5ec" x="8" dy="15">Votre niveau : </tspan><tspan style="font-weight:bold" dx="0">33</tspan></text></g></svg></div></div>
+
+
+    <br>
+    <section id="recommendationsID" class="wrapper">
+        <div class="inner split">
+            <section>
+                <h2>Recommandations</h2>
+                <b>Durée de la route à proposer:</b>
+                <span id="rec1">Pas de marche</span><br>
+                <b>Vitesse de la marche:</b>
+                <span id="rec2">Proposer de réduire le temps de 20%</span><br>
+                <b> Chemins:</b>
+                <span id="rec3">Chemins exposés possibles</span><br>
+                <b>Denivelé:</b>
+                <span id="rec4">Des dénivelés modérés possibles</span><br>
+                <b>Risques de chute:</b>
+                <span id="rec5">Proposer des randonnées accompagnées ou des chemins simples</span><br>
+                <b>Brochures/infos/conseils:</b>
+                <span id="rec6">Proposer brochures pour encourager de reprendre l'activité physique.</span><br>
+            </section>
+        </div>
+    </section>
+</div>
+
+
+
+<script type="text/javascript">
+
+    var w = 500, h = 500;
+
+    $("input[type='radio']").change(function () {
+        redraw(false);
+    });
+
+    $("input[type='checkbox']").change(function () {
+        redraw(false);
+    })
+
+
+    $('input[name=ap1]').change(function () {
+        if ($(this).val() == 1) {
+            $('#sec_ap2').show();
+            $('#sec_ap4').hide();
+            $('#sec_ap5').hide();
+        }
+        else {
+            $('#sec_ap2').hide();
+            $('#sec_ap3').hide();
+            $('#sec_ap4').show();
+        }
+    });
+
+    $('input[name=ap2]').change(function () {
+        if ($(this).val() == 1) {
+            $('#sec_ap3').show();
+        }
+        else {
+            $('#sec_ap3').hide();
+        }
+    });
+
+    $('input[name=ap4]').change(function () {
+        if ($(this).val() == 1) {
+            $('#sec_ap5').hide();
+        }
+        else {
+            $('#sec_ap5').show();
+        }
+    });
+
+    function redraw(bStart) {
+
+        /* PHYSICAL ACTIVITY */
+        var pa1 = $('input:radio[name=ap1]:checked').val();
+        var pa2 = $('input:radio[name=ap2]:checked').val();
+        var pa3 = $('input:radio[name=ap3]:checked').val();
+        var pa4 = $('input:radio[name=ap4]:checked').val();
+        var pa5 = $('input:radio[name=ap5_1]:checked').val();
+        var pa6 = $('input:radio[name=ap5_2]:checked').val();
+
+        var physicalActivity;
+
+        if (pa1 == 1 && pa2 == 1 && pa3 == 1) {
+            physicalActivity = 6;
+        }
+        else if (pa1 == 1 && pa2 == 1 && pa3 == 0) {
+            physicalActivity = 5;
+        }
+        else if (pa1 == 1 && pa2 == 0) {
+            physicalActivity = 4;
+        }
+        else if (pa1 == 0 && pa4 == 1) {
+            physicalActivity = 3;
+        }
+        else if (pa1 == 0 && pa4 == 0 && pa5 == 0 && pa6 == 0) {
+            physicalActivity = 1;
+        }
+        else if ((pa1 == 0 && pa4 == 0 && pa5 == 1 && pa6 == 0) || (pa1 == 0 && pa4 == 0 && pa5 == 0 && pa6 == 1) || (pa1 == 0 && pa4 == 0 && pa5 == 1 && pa6 == 1)) {
+            physicalActivity = 2;
+        }
+        else {
+            physicalActivity = 0;
+        }
+
+        var paPlot = physicalActivity / 6 * 100;
+
+        /* MARCHE SANS AIDE */
+        var walkHelp = $('input:radio[name=q1]:checked').val();
+        var walkHelpPlot = (walkHelp / 5) * 100;
+
+        /* VITESSE DE MARCHE */
+        var walkSpeed = $('input:radio[name=q2]:checked').val();
+        var walkSpeedPlot = (walkSpeed / 5) * 100;
+
+        /* TEMPS DE MARCHE */
+        var walkTime = $('input:radio[name=q3]:checked').val();
+        var walkTimePlot = (walkTime / 7) * 100;
+
+        /* CAPACITE A MONTER */
+        var climb1 = parseInt($('input:radio[name=q4_1]:checked').val(), 10);
+        var climb2 = parseInt($('input:radio[name=q4_2]:checked').val(), 10);
+        var climb3 = parseInt($('input:radio[name=q4_3]:checked').val(), 10);
+        var climb = climb1 + climb2 + climb3;
+        var climbPlot = (climb / 27) * 100;
+        if (climb1 == 0) {
+            climbPlot = 0;
+            $('#etage3').hide();
+            $('#etage5').hide();
+        } else {
+            $('#etage3').show();
+            $('#etage5').show();
+        }
+        /*
+         if (climb1 > 0 && climb2 == 5){
+         climbPlot = (climb / 27) * 100;
+         $('#etage5').hide();
+         } else if (climb1 > 0 && climb2 > 5) {
+         $('#etage5').show();
+         }*/
+
+        /* ASSURANCE A MARCHER */
+        var secure = parseInt($('input:radio[name=q8_1]:checked').val(), 10);
+        secure = secure + parseInt($('input:radio[name=q8_2]:checked').val(), 10);
+        secure = secure + parseInt($('input:radio[name=q8_3]:checked').val(), 10);
+        var securePlot = (secure / 5) * 100;
+
+        /* PEUR DU VIDE */
+        var voids = $('input:radio[name=q5]:checked').val();
+        var voidsPlot = 100 - (voids / 1 * 100);
+
+        /* EQUILIBRE */
+        var equilibre = $('input:radio[name=q9]:checked').val();
+        var equilibrePlot = (equilibre / 2 * 100);
+
+        /* DOULEURS */
+        var pain = $('input:checkbox[name=q6]:checked').length;
+        var painPlot = 100 - (pain / 5 * 100);
+        if ($('#r6_6:checkbox:checked').length > 0) {
+            painPlot = 100;
+            $('input:checkbox[name=q6]').prop('checked', false);
+            $('#r6_6').prop('checked', true);
+        }
+        if (pain === 0) {
+            painPlot = 0;
+        }
+
+        /* MOBILITE ARTICULAIRE */
+        var mobility = $('input:checkbox[name=q7]:checked').length;
+        var mobilityPlot = 100 - (mobility / 3 * 100);
+        if ($('#r7_4:checkbox:checked').length > 0) {
+            mobilityPlot = 100;
+            $('input:checkbox[name=q7]').prop('checked', false);
+            $('#r7_4').prop('checked', true);
+        }
+        if (mobility === 0) {
+            mobilityPlot = 0;
+        }
+
+        var rec1 = '';
+        if (walkTime == 7) rec1 = "3h";
+        else if (walkTime == 6) rec1 = "2h";
+        else if (walkTime == 5) rec1 = "1h";
+        else if (walkTime == 4) rec1 = "30 min";
+        else if (walkTime == 3) rec1 = "15 min";
+        else if (walkTime == 2) rec1 = "5 min";
+        else if (walkTime < 2) rec1 = "Pas de marche";
+
+        var rec2 = '';
+        if (walkSpeed == 1) rec2 = "Proposer d'augmenter le temps indiqué de 30%";
+        else if (walkSpeed == 2) rec2 = "Proposer d'augmenter le temps indiqué de 10%";
+        else if (walkSpeed == 3) rec2 = "Proposer le temps indiqué";
+        else if (walkSpeed == 4) rec2 = "Proposer de réduire le temps de 10%";
+        else if (walkSpeed == 5) rec2 = "Proposer de réduire le temps de 20%";
+
+        var rec3 = '';
+        if (voids == 1) rec3 = "Pas de chemins exposés";
+        else if (voids == 0) rec3 = "Chemins exposés possibles";
+
+        var rec4 = '';
+        if (climb3 > 12) rec4 = "Des dénivelés importants possibles";
+        else if (climb3 > 10) rec4 = "Des dénivelés modérés possibles";
+        else if (climb2 > 5) rec4 = "Seulement des dénivelés faibles à modérés possibles";
+        else if (climb1 > 0) rec4 = "Seulement des dénivelés très faibles possibles";
+        else if (climb1 == 0) rec4 = "pas des dénivelés possibles";
+
+        var rec5 = '';
+        if (secure < 5 && secure > 0) rec5 = "Proposer des randonnées accompagnées ou des chemins simples";
+        else if (secure == 0) rec5 = "Proposer des chemins sans trop de difficulté (risque de chutes) et des randonnées accompagnées";
+        else if (secure == 5) rec5 = "Pas de problèmes avec l'equilibre ou des risques de chutes; pas de propositions nécessaires";
+
+        var rec6 = '';
+        if (physicalActivity == 6) rec6 = "Bravo, continuez!";
+        if (physicalActivity == 5) rec6 = "Proposer brochures sur l'activité physique ou conseils individuels dans centre de sports";
+        if (physicalActivity == 4) rec6 = "Proposer brochures sur l'activité physique ou conseils individuels dans centre de sports";
+        if (physicalActivity == 3) rec6 = "Proposer brochures pour surmonter les éventuelles barrières";
+        if (physicalActivity == 2) rec6 = "Proposer brochures pour encourager de reprendre l'activité physique.";
+        if (physicalActivity == 1) rec6 = "Proposer brochures pour encourager de reprendre l'activité physique et brochure sur les bénefices de l'activité physique.";
+
+        if (rec1 != '')$('#rec1').text(rec1);
+        if (rec2 != '')$('#rec2').text(rec2);
+        if (rec3 != '')$('#rec3').text(rec3);
+        if (rec4 != '')$('#rec4').text(rec4);
+        if (rec5 != '') $('#rec5').text(rec5);
+        if (physicalActivity > 0 ) {$('#rec6').text(rec6);}
+
+
+        /*$("input:radio").attr("checked", false);
+         $('#sec_ap2').hide();
+         $('#sec_ap3').hide();
+         $('#sec_ap4').hide();
+         $('#sec_ap5').hide();*/
+
+
+        if (bStart == true) {
+            paPlot = 0;
+            walkHelpPlot = 0;
+            walkSpeedPlot = 0;
+            walkTimePlot = 0;
+            climbPlot = 0;
+            securePlot = 0;
+            voidsPlot = 0;
+            equilibrePlot = 0;
+            painPlot = 0;
+            mobilityPlot = 0;
+
+        }
+        Highcharts.chart('radarID', {
+
+            chart: {
+                polar: true,
+                type: 'line'
+            },
+
+            title: {
+                text: 'Votre niveau fitness',
+                x: -80
+            },
+
+            pane: {
+                size: '80%'
+            },
+
+            xAxis: {
+                categories: ['Activité physique', 'Marcher sans aides', 'Vitesse marche', 'Temps de marche',
+                    'Capacité à monter', 'Assurance à marcher', 'Pas peur du vide', 'Equilibre', 'Sans douleurs', 'Mobilité articulaire'],
+                tickmarkPlacement: 'on',
+                lineWidth: 0
+            },
+
+            yAxis: {
+                gridLineInterpolation: 'polygon',
+                lineWidth: 0,
+                min: 0,
+                max: 100
+            },
+
+            tooltip: {
+                shared: true,
+                pointFormat: '<span style="color:{series.color}">{series.name}: <b>{point.y:,.0f}</b><br/>'
+            },
+
+            legend: {
+                align: 'right',
+                verticalAlign: 'top',
+                y: 70,
+                layout: 'vertical'
+            },
+
+            series: [{
+                name: 'Votre niveau ',
+                data: [paPlot, walkHelpPlot, walkSpeedPlot, walkTimePlot, climbPlot, securePlot, voidsPlot, equilibrePlot, painPlot, mobilityPlot],
+                pointPlacement: 'on'
+            }]
+        });
+    }
+
+</script>
+
+</body></html>
